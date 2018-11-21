@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
 
 
 class AccordionItem extends Component {
@@ -12,28 +11,6 @@ class AccordionItem extends Component {
     constructor(props) {
         super(props);
         this.state = { isOpen: props.isOpen };
-        this.mounted = true;
-    }
-
-    handleDocumentClick = event => {
-        if (
-            this.mounted &&
-            !ReactDOM.findDOMNode(this).contains(event.target) &&
-            this.state.isOpen
-        ) {
-            this.setState({ isOpen: false });
-        }
-    };
-
-    componentDidMount() {
-        if (this.props.atomic) {
-            document.addEventListener('click', this.handleDocumentClick);
-        }
-    }
-
-    componentWillUnmount() {
-        this.mounted = false;
-        document.removeEventListener('click', this.handleDocumentClick);
     }
 
     onClick = () => {

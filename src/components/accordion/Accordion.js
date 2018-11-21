@@ -9,9 +9,7 @@ class Accordion extends Component {
 
     renderChildren() {
         return React.Children.map(this.props.children, child => {
-            return React.cloneElement(child, {
-                atomic: this.props.atomic
-            });
+            return child;
         });
     }
 
