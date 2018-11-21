@@ -1,0 +1,69 @@
+
+/* form starting stylings ------------------------------- */
+.personal-info .group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.personal-info input {
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    width: 250px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: inherit;
+}
+.personal-info input:focus {
+    outline: none;
+}
+
+/* LABEL ======================================= */
+.personal-info label {
+    color: #999;
+    font-size: 18px;
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 15px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+    top: -15px;
+    font-size: 14px;
+    color: #bf0101;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 270px;
+}
+.bar:before, .bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: #bf0101;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+    left: 50%;
+}
+.bar:after {
+    right: 50%;
+}
+
+/* active state */
+.personal-info input:focus ~ .bar:before,
+.personal-info input:focus ~ .bar:after {
+    width: 50%;
+}
