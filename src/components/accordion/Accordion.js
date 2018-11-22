@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './accordion.css'
 
 class Accordion extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+
+    state = {
+        doClose: true
     }
 
     renderChildren() {
         return React.Children.map(this.props.children, child => {
-            return child;
+            return child
         });
     }
 

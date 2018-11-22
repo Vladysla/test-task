@@ -1,0 +1,46 @@
+div:focus {
+    outline: none;
+}
+.select-box--container {
+    line-height: normal;
+    height: 35px;
+    border: 1px solid #aaa;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.select-box--box {
+    width: 270px;
+    left: 0;
+}
+
+.select-box--selected-item {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 4px 12px;
+    vertical-align: middle;
+}
+
+.select-box--items {
+}
+
+.select-box--items div {
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 6px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.select-box--items div.selected {
+    background-color: #bf0101;
+}
+
+.select-box--items div:hover {
+    background-color: #bf2f31;
+}
+

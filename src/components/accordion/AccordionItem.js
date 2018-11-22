@@ -10,8 +10,27 @@ class AccordionItem extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { isOpen: props.isOpen };
+        this.state = { isOpen: props.isOpen }
+        this.mounted = true
     }
+
+    componentDidMount() {
+        document.addEventListener('click', this.handleDocumentClick)
+    }
+    componentWillUnmount() {
+        this.mounted = false;
+        document.removeEventListener('click', this.handleDocumentClick)
+    }
+
+    handleDocumentClick = event => {
+        if (
+            this.mounted &&
+            !this.accordionItem.contains(event.target) &&
+            this.state.isOpen
+        ) {
+            this.setState({ isOpen: false })
+        }
+    };
 
     onClick = () => {
         this.setState(prevState => (
@@ -25,7 +44,7 @@ class AccordionItem extends Component {
         let active = (this.state.isOpen) ? 'active' : ''
 
         return (
-            <div className={`accordion-item ${active}`}>
+            <div ref={(item) => this.accordionItem = item} className={`accordion-item ${active}`}>
                 <button type="button" className="title" onClick={this.onClick}>
                     {this.props.title}
                 </button>

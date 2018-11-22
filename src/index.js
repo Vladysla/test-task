@@ -5,6 +5,7 @@ import { Accordion, AccordionItem } from './components/accordion'
 import Input from './components/input'
 import Checbox from './components/checkbox'
 import Modal from './components/modal'
+import Dropdown from './components/dropdown'
 
 import './main.css'
 
@@ -16,6 +17,7 @@ class Main extends Component
             name: '',
             email: '',
             phone: '',
+            cityId: 0,
             pepperoni: false,
             pepper: false,
             doubleCheese: false,
@@ -27,9 +29,16 @@ class Main extends Component
         const target = e.target
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name
+        console.log(e)
 
         this.setState({
             [name]: value
+        })
+    }
+
+    updateFromDropdown = (value) => {
+        this.setState({
+            cityId: value
         })
     }
 
@@ -107,9 +116,10 @@ class Main extends Component
                                             <Input change={this.handleChange} name="name" label="Name" value={this.state.name} />
                                             <Input change={this.handleChange} name="email" label="E-mail" value={this.state.email} />
                                             <Input change={this.handleChange} name="phone" label="Phone" value={this.state.phone} />
-                                            <div className="result-section">
-                                                <button type="submit" onClick={this.showModal} className="result-btn">Apply</button>
-                                            </div>
+                                            <Dropdown change={this.updateFromDropdown} name="cityId" items={items}/>
+                                        </div>
+                                        <div className="result-section">
+                                            <button type="submit" onClick={this.showModal} className="result-btn">Apply</button>
                                         </div>
                                     </div>
                                 </div>
@@ -121,6 +131,13 @@ class Main extends Component
         )
     }
 }
+
+const items = [
+    { value: 'Kiev', id: 1 },
+    { value: 'Chernovtsi', id: 2 },
+    { value: 'Lvov', id: 3 },
+    { value: 'Ivano-Frankovsk', id: 4 },
+]
 
 const Delivery = () => (
     <div style={{ padding: '18px', fontSize: '18px' }}>
